@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="Spring+SpringMVC+MyBatis 踩坑记录 最近在公司实习部门负责的项目和小学期都用到了SSM架构来开发，因此这里记录一些遇到的坑，以及解决办法  Could not resolve placeholder “mail.from” in string value “${mail.from}出现原因在工程中创建了两个properties文件，如jdbc.properties和mail">
+<meta name="keywords" content="Spring,SpringMVC,MyBatis">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SSM-Study">
+<meta property="og:url" content="https://github.com/agno3xzy/agno3xzy.github.io/2019/07/06/SSM-Study/index.html">
+<meta property="og:site_name" content="agno3&#39;s LOG">
+<meta property="og:description" content="Spring+SpringMVC+MyBatis 踩坑记录 最近在公司实习部门负责的项目和小学期都用到了SSM架构来开发，因此这里记录一些遇到的坑，以及解决办法  Could not resolve placeholder “mail.from” in string value “${mail.from}出现原因在工程中创建了两个properties文件，如jdbc.properties和mail">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-07-06T07:21:58.946Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SSM-Study">
+<meta name="twitter:description" content="Spring+SpringMVC+MyBatis 踩坑记录 最近在公司实习部门负责的项目和小学期都用到了SSM架构来开发，因此这里记录一些遇到的坑，以及解决办法  Could not resolve placeholder “mail.from” in string value “${mail.from}出现原因在工程中创建了两个properties文件，如jdbc.properties和mail">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>SSM-Study</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a href="http://github.com/agno3xzy">项目</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://github.com/agno3xzy/agno3xzy.github.io/2019/07/06/SSM-Study/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://github.com/agno3xzy/agno3xzy.github.io/2019/07/06/SSM-Study/&text=SSM-Study"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://github.com/agno3xzy/agno3xzy.github.io/2019/07/06/SSM-Study/&title=SSM-Study"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://github.com/agno3xzy/agno3xzy.github.io/2019/07/06/SSM-Study/&is_video=false&description=SSM-Study"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=SSM-Study&body=Check out this article: https://github.com/agno3xzy/agno3xzy.github.io/2019/07/06/SSM-Study/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://github.com/agno3xzy/agno3xzy.github.io/2019/07/06/SSM-Study/&title=SSM-Study"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://github.com/agno3xzy/agno3xzy.github.io/2019/07/06/SSM-Study/&title=SSM-Study"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://github.com/agno3xzy/agno3xzy.github.io/2019/07/06/SSM-Study/&title=SSM-Study"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://github.com/agno3xzy/agno3xzy.github.io/2019/07/06/SSM-Study/&title=SSM-Study"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://github.com/agno3xzy/agno3xzy.github.io/2019/07/06/SSM-Study/&name=SSM-Study&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Spring-SpringMVC-MyBatis-踩坑记录"><span class="toc-number">1.</span> <span class="toc-text">Spring+SpringMVC+MyBatis 踩坑记录</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Could-not-resolve-placeholder-“mail-from”-in-string-value-“-mail-from"><span class="toc-number">1.1.</span> <span class="toc-text">Could not resolve placeholder “mail.from” in string value “${mail.from}</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#出现原因"><span class="toc-number">1.1.1.</span> <span class="toc-text">出现原因</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#解决方案"><span class="toc-number">1.1.2.</span> <span class="toc-text">解决方案</span></a></li></ol></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        SSM-Study
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">agno3's LOG</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2019-07-06T06:53:28.000Z" itemprop="datePublished">2019-07-06</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/explore/">explore</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/MyBatis/">MyBatis</a>, <a class="tag-link" href="/tags/Spring/">Spring</a>, <a class="tag-link" href="/tags/SpringMVC/">SpringMVC</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h1 id="Spring-SpringMVC-MyBatis-踩坑记录"><a href="#Spring-SpringMVC-MyBatis-踩坑记录" class="headerlink" title="Spring+SpringMVC+MyBatis 踩坑记录"></a>Spring+SpringMVC+MyBatis 踩坑记录</h1><blockquote>
+<p>最近在公司实习部门负责的项目和小学期都用到了SSM架构来开发，因此这里记录一些遇到的坑，以及解决办法</p>
+</blockquote>
+<h2 id="Could-not-resolve-placeholder-“mail-from”-in-string-value-“-mail-from"><a href="#Could-not-resolve-placeholder-“mail-from”-in-string-value-“-mail-from" class="headerlink" title="Could not resolve placeholder “mail.from” in string value “${mail.from}"></a>Could not resolve placeholder “mail.from” in string value “${mail.from}</h2><h3 id="出现原因"><a href="#出现原因" class="headerlink" title="出现原因"></a>出现原因</h3><p>在工程中创建了两个properties文件，如jdbc.properties和mail.properties文件并且同时导入发生。</p>
+<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><ol>
+<li>文件导入写到一个配置中,中间加逗号隔开</li>
+</ol>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">context:</span> <span class="attr">property-placeholder</span> <span class="attr">location</span>=<span class="string">"classpath:jdbc.properties , classpath:mail.properties"</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>在每个扫描的配置文件后加上 ignore-unresolvable=”true”</li>
+</ol>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">context:</span> <span class="attr">property-placeholder</span> <span class="attr">location</span>=<span class="string">"classpath:jdbc.properties"</span> <span class="attr">ignore-unresolvable</span>=<span class="string">"true"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">context:</span> <span class="attr">property-placeholder</span> <span class="attr">location</span>=<span class="string">"classpath:mail.properties"</span> <span class="attr">ignore-unresolvable</span>=<span class="string">"true"</span> /&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>使用PropertiesFactoryBean管理配置文件</li>
+</ol>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"configProperties"</span> <span class="attr">class</span>=<span class="string">"org.springframework.beans.factory.config.PropertiesFactoryBean"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"locations"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">list</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">value</span>&gt;</span>classpath:jdbc.properties<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">value</span>&gt;</span>classpath:mail.properties<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">list</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"fileEncoding"</span> <span class="attr">value</span>=<span class="string">"UTF-8"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"propertyConfigurer"</span> <span class="attr">class</span>=<span class="string">"org.springframework.beans.factory.config.PreferencesPlaceholderConfigurer"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"properties"</span> <span class="attr">ref</span>=<span class="string">"configProperties"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a href="http://github.com/agno3xzy">项目</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Spring-SpringMVC-MyBatis-踩坑记录"><span class="toc-number">1.</span> <span class="toc-text">Spring+SpringMVC+MyBatis 踩坑记录</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Could-not-resolve-placeholder-“mail-from”-in-string-value-“-mail-from"><span class="toc-number">1.1.</span> <span class="toc-text">Could not resolve placeholder “mail.from” in string value “${mail.from}</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#出现原因"><span class="toc-number">1.1.1.</span> <span class="toc-text">出现原因</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#解决方案"><span class="toc-number">1.1.2.</span> <span class="toc-text">解决方案</span></a></li></ol></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://github.com/agno3xzy/agno3xzy.github.io/2019/07/06/SSM-Study/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://github.com/agno3xzy/agno3xzy.github.io/2019/07/06/SSM-Study/&text=SSM-Study"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://github.com/agno3xzy/agno3xzy.github.io/2019/07/06/SSM-Study/&title=SSM-Study"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://github.com/agno3xzy/agno3xzy.github.io/2019/07/06/SSM-Study/&is_video=false&description=SSM-Study"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=SSM-Study&body=Check out this article: https://github.com/agno3xzy/agno3xzy.github.io/2019/07/06/SSM-Study/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://github.com/agno3xzy/agno3xzy.github.io/2019/07/06/SSM-Study/&title=SSM-Study"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://github.com/agno3xzy/agno3xzy.github.io/2019/07/06/SSM-Study/&title=SSM-Study"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://github.com/agno3xzy/agno3xzy.github.io/2019/07/06/SSM-Study/&title=SSM-Study"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://github.com/agno3xzy/agno3xzy.github.io/2019/07/06/SSM-Study/&title=SSM-Study"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://github.com/agno3xzy/agno3xzy.github.io/2019/07/06/SSM-Study/&name=SSM-Study&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2019 agno3xzy
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a href="http://github.com/agno3xzy">项目</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+    <!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>
